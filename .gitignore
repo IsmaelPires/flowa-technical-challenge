@@ -1,0 +1,9 @@
+bin/
+obj/
+.vs/
+store/
+logs/
+*.user
+*.suo
+TestResults/
+node_modules/

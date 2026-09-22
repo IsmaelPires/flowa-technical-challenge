@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Orders.Domain\Orders.Domain.csproj" />
+    <PackageReference Include="QuickFIXn.Core" Version="1.14.1" />
+    <PackageReference Include="QuickFIXn.FIX44" Version="1.14.1" GeneratePathProperty="true" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Config\acceptor.cfg" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="$(PkgQuickFIXn_FIX44)\DataDictionary\FIX44.xml" Link="Config\FIX44.xml" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

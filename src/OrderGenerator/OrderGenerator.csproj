@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <ProjectReference Include="..\Orders.Domain\Orders.Domain.csproj" />
+    <PackageReference Include="QuickFIXn.Core" Version="1.14.1" />
+    <PackageReference Include="QuickFIXn.FIX44" Version="1.14.1" GeneratePathProperty="true" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(PkgQuickFIXn_FIX44)\DataDictionary\FIX44.xml" Link="Config\FIX44.xml" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="BuildReactClient" BeforeTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <Exec WorkingDirectory="$(MSBuildProjectDirectory)\ClientApp" Command="npm ci" />
+    <Exec WorkingDirectory="$(MSBuildProjectDirectory)\ClientApp" Command="npm run build" />
+  </Target>
+</Project>
